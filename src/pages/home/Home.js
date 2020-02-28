@@ -1,13 +1,13 @@
 import React, { useEffect } from 'react';
-import { BrowserRouter as Router, Switch, Route, Link } from 'react-router-dom';
+// import { BrowserRouter as Router, Switch, Route, Link } from 'react-router-dom';
 import Login from '../layouts/Login';
 import AppNavbar from '../layouts/AppNavbar';
 
-import PartManufacturer from './PartManufacturer';
-import CarManufacturer from './CarManufacturer';
-import Dealer from './Dealer';
-import CarUser from './CarUser';
-import NotFound from './NotFound';
+//import PartManufacturer from './PartManufacturer';
+// import CarManufacturer from './CarManufacturer';
+import Dealer from '../dealer/Dealer';
+// import CarUser from './CarUser';
+// import NotFound from './NotFound';
 import 'materialize-css/dist/css/materialize.min.css';
 import M from 'materialize-css/dist/js/materialize.min.js'
 
@@ -17,15 +17,16 @@ const Home = () => {
         M.AutoInit();
     })
 
-    const checkLogin = (isLoggedIn) => {
-        console.log("isLoggedIn: ", isLoggedIn)
-    }
+    // const checkLogin = (isLoggedIn) => {
+    //     console.log("isLoggedIn: ", isLoggedIn)
+    // }
     return (
         <div className="Home">
             <AppNavbar />
             <Login />
-            {/* <PartManufacturer />
-            <CarManufacturer /> */}
+            {/* <PartManufacturer /> */}
+            {/* <CarManufacturer /> */}
+            {/* <Dealer /> */}
         </div>
         // <Router>
         //     <div className="Home">

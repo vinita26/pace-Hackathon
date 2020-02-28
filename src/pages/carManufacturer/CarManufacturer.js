@@ -1,25 +1,18 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 
 const CarManufacturer = () => {
 
     const [productName, setProductName] = useState('');
     const [stockValue, setStockValue] = useState(0);
 
-    useEffect(() => {
-        getProductDetails();
-        //eslint-disable-next-line
-    }, []);
-
     const getProductDetails = async (productName) => {
         console.log('productName: ', productName);
 
         const res = await fetch(`http://localhost:5000/${productName}`);
         const data = await res.json();
-
         console.log('Product detail: ', data);
         setStockValue(data.length)
     }
-
 
     return (
         <div className="row align-center" >
@@ -38,7 +31,7 @@ const CarManufacturer = () => {
                             }
                             }
                         >
-                            <option value="" disabled >Choose your option</option>
+                            <option value="" disabled >Choose Product</option>
                             <option value="PartManufacturer">Wheel</option>
                             <option value="CarManufacturer">Steering Wheel</option>
                         </select>
@@ -47,8 +40,8 @@ const CarManufacturer = () => {
                             <form className="col s12">
                                 <div className="row">
                                     <div className="input-field col s6">
-                                        <input placeholder="Value" id="total_stock_value" type="text" class="validate" value={stockValue} />
-                                        <label for="stock_value" className="white-text">Total items:</label>
+                                        <input placeholder="Value" id="total_stock_value" type="text" className="validate" value={stockValue} />
+                                        <label htmlFor="stock_value" className="white-text">Total items:</label>
                                     </div>
                                 </div>
                             </form>
@@ -60,7 +53,7 @@ const CarManufacturer = () => {
                             className="btn waves-effect waves-light"
                             type="submit"
                             name="action"
-                            onClick={getProductDetails}
+                            onClick={getProductDetails()}
                         >Get Stock Details
                             <i className="material-icons right">send</i>
                         </button>

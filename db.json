@@ -9,13 +9,13 @@
         {
             "$class": "org.nissan.dlf.PartManufacturer",
             "participantID": "MRB001",
-            "name": "MRF",
+            "name": "MRF1",
             "location": "Bangalore"
         },
         {
             "$class": "org.nissan.dlf.PartManufacturer",
             "participantID": "MRB002",
-            "name": "MRF",
+            "name": "MRF2",
             "location": "Bangalore"
         }
     ],
@@ -53,7 +53,28 @@
             "width": "7inch",
             "dish": "10mm",
             "assetId": "STWB001",
-            "manufacturerId": "resource:org.nissan.dlf.PartManufacturer#HOTTRACKS001"
+            "manufacturerId": "resource:org.nissan.dlf.PartManufacturer#HOTTRACKS001",
+            "currentParticipant": "resource:org.nissan.dlf.PartManufacturer#MRB001"
+        },
+        {
+            "$class": "org.nissan.dlf.SteeringWheel",
+            "spocs": "R&P",
+            "size": "14.5inch",
+            "width": "7inch",
+            "dish": "10mm",
+            "assetId": "STWB002",
+            "manufacturerId": "resource:org.nissan.dlf.PartManufacturer#MRB002",
+            "currentParticipant": "resource:org.nissan.dlf.PartManufacturer#MRB001"
+        },
+        {
+            "$class": "org.nissan.dlf.SteeringWheel",
+            "spocs": "R&P",
+            "size": "14.5inch",
+            "width": "7inch",
+            "dish": "10mm",
+            "assetId": "STWB003",
+            "manufacturerId": "resource:org.nissan.dlf.PartManufacturer#MRB002",
+            "currentParticipant": "resource:org.nissan.dlf.Dealer#SUB001"
         }
     ],
     "Wheel": [
@@ -63,7 +84,17 @@
             "width": "195mm",
             "speedRating": "75mbps",
             "assetId": "WHBMRF001",
-            "manufacturerId": "resource:org.nissan.dlf.PartManufacturer#MRB001"
+            "manufacturerId": "resource:org.nissan.dlf.PartManufacturer#MRB001",
+            "currentParticipant": "resource:org.nissan.dlf.PartManufacturer#MRB001"
+        },
+        {
+            "$class": "org.nissan.dlf.Wheel",
+            "diameter": "14inch",
+            "width": "195mm",
+            "speedRating": "75mbps",
+            "assetId": "WHBMRF002",
+            "manufacturerId": "resource:org.nissan.dlf.PartManufacturer#MRB001",
+            "currentParticipant": "resource:org.nissan.dlf.PartManufacturer#MRB001"
         }
     ]
 }
