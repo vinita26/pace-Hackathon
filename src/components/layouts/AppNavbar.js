@@ -1,4 +1,4 @@
-import React from 'react'
+import React from 'react';
 
 const AppNavbar = () => {
     return (
@@ -6,11 +6,11 @@ const AppNavbar = () => {
             <div className="navbar-fixed">
                 <nav className="blue">
                     <div className="nav-wrapper">
-                        <a href="#!" className="brand-logo" style={{ marginLeft: "15px" }}>BlockChain</a>
-                        <ul className="right hide-on-med-and-down">
+                        <a href="#!" className="brand-logo" style={{ marginLeft: "15px" }}>BlockChain Network</a>
+                        {/* <ul className="right hide-on-med-and-down">
                             <li><a href="sass.html">Home</a></li>
                             <li><a href="badges.html">About</a></li>
-                        </ul>
+                        </ul> */}
                     </div>
                 </nav>
             </div>

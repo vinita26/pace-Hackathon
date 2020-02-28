@@ -7,7 +7,8 @@ import PartManufacturer from './pages/partManufacturer/PartManufacturer';
 import CarManufacturer from './pages/carManufacturer/CarManufacturer';
 import Dealer from './pages/dealer/Dealer';
 import Vin from './pages/vin/Vin';
-import AppNavbar from './components/layouts/AppNavbar'
+import AppNavbar from './components/layouts/AppNavbar';
+import Footer from './components/layouts/Footer'
 
 
 class Router extends React.Component {
@@ -26,6 +27,7 @@ class Router extends React.Component {
                         <Route exact path="/vin/:participantId" component={Vin} />
                     </BrowserRouter>
                 </Provider>
+                <Footer />
             </React.Fragment>
         )
     }

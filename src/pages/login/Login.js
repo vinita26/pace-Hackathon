@@ -1,7 +1,6 @@
 import React, { useState } from 'react';
 import { connect } from 'react-redux'
 import * as actions from './actions'
-import * as selectors from './selectors'
 
 const Login = (props) => {
 
@@ -12,8 +11,8 @@ const Login = (props) => {
 
     const getStakeHolderData = async (stakeHolderType) => {
         // console.log('stakeHolderType value: ', stakeholderType)
-        const res = await fetch(`http://ec2-54-89-17-196.compute-1.amazonaws.com:8080/api/${stakeHolderType}`);
-        // const res = await fetch(`http://localhost:5000/${stakeHolderType}`);
+        //const res = await fetch(`http://ec2-54-89-17-196.compute-1.amazonaws.com:8080/api/${stakeHolderType}`);
+        const res = await fetch(`http://localhost:5000/${stakeHolderType}`);
         const data = await res.json();
         // console.log('names', data)
         setStakeHolderData(data);
@@ -30,7 +29,7 @@ const Login = (props) => {
 
     const login = () => {
         const stakeHolderDetails = { stakeHolderType, selectedStakeHolderData }
-        console.log('stakeHolderDetails', stakeHolderDetails)
+        //console.log('stakeHolderDetails', stakeHolderDetails)
 
         const selectedSHData = stakeHolderData.filter((stakeHolder) => {
             if (Object.keys(stakeHolder).includes("vinID")) {
@@ -51,62 +50,64 @@ const Login = (props) => {
     const stakeHolderOptions = stakeHolderData.map(stakeholder => {
         const shaLength = stakeholder.$class.split('.').length
         const stakeHolderName = stakeholder.$class.split('.')[shaLength - 1]
-        if (stakeHolderName == "Vin") {
+        if (stakeHolderName === "Vin") {
             return (<option key={stakeholder.vinID} value={`${stakeholder.model}/${stakeholder.vinID}`}>{`${stakeholder.model}/${stakeholder.vinID}`}</option>)
         } else {
             return (<option key={stakeholder.participantID} value={stakeholder.name}>{stakeholder.name}</option>)
         }
     })
 
-    console.log("stakeHolderOptions", stakeHolderOptions)
+    //console.log("stakeHolderOptions", stakeHolderOptions)
 
-    console.log("stakeholderData:", stakeHolderData)
+    //console.log("stakeholderData:", stakeHolderData)
 
     return (
-        <div className="row align-center" >
-            <div className="col s12 m6">
-                <div className="card blue darken-1" >
-                    <div className="card-content white-text" >
-                        <span className="card-title" >Login As:</span>
+        <div className="container" >
+            <div className="row valign-wrapper">
+                <div className="col s6 offset-s3 valign">
+                    <div className="card blue darken-1" >
+                        <div className="card-content white-text" >
+                            <span className="card-title" >Login As:</span>
 
-                        <label className="white-text">Select stakeHolder Type</label>
-                        <select
-                            name="stakeholderType"
-                            className="browser-default"
-                            value={stakeHolderType}
-                            onChange={e => getStakeHolderData(e.target.value)}
-                        >
-                            <option value="" disabled >Choose your option</option>
-                            <option value="PartManufacturer">PartManufacturer</option>
-                            <option value="CarManufacturer">CarManufacturer</option>
-                            <option value="Dealer">Dealer</option>
-                            <option value="Vin">Vin</option>
-                        </select>
+                            <label className="white-text">Select stakeHolder Type</label>
+                            <select
+                                name="stakeholderType"
+                                className="browser-default"
+                                value={stakeHolderType}
+                                onChange={e => getStakeHolderData(e.target.value)}
+                            >
+                                <option value="" disabled >Choose your option</option>
+                                <option value="PartManufacturer">PartManufacturer</option>
+                                <option value="CarManufacturer">CarManufacturer</option>
+                                <option value="Dealer">Dealer</option>
+                                <option value="Vin">Vin</option>
+                            </select>
 
-                        <label className="white-text">Select stakeHolder Name</label>
-                        <select
-                            name="stakeHolderNames"
-                            className="browser-default"
-                            value={selectedStakeHolderData}
-                            onChange={e => {
-                                updateSelectedStakeHolderDataInternal(e)
-                            }}
-                        >
+                            <label className="white-text">Select stakeHolder Name</label>
+                            <select
+                                name="stakeHolderNames"
+                                className="browser-default"
+                                value={selectedStakeHolderData}
+                                onChange={e => {
+                                    updateSelectedStakeHolderDataInternal(e)
+                                }}
+                            >
 
-                            <option value="" disabled >Choose your option</option>
-                            {stakeHolderData && stakeHolderOptions}
-                        </select>
+                                <option value="" disabled >Choose your option</option>
+                                {stakeHolderData && stakeHolderOptions}
+                            </select>
 
-                    </div>
-                    <div className="card-action">
-                        <button
-                            className="btn waves-effect waves-light"
-                            type="submit"
-                            name="action"
-                            onClick={login}
-                        >Login
+                        </div>
+                        <div className="card-action">
+                            <button
+                                className="btn waves-effect waves-light"
+                                type="submit"
+                                name="action"
+                                onClick={login}
+                            >Login
                             <i className="material-icons right">send</i>
-                        </button>
+                            </button>
+                        </div>
                     </div>
                 </div>
             </div>

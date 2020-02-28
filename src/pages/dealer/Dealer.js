@@ -14,47 +14,57 @@ const Dealer = () => {
         setProductDetails(data);
     }
 
+    const showProducts = productDetails.map(product => {
+        console.log("product", product)
+        console.log("asset", product.assetId)
+        return <li className="collection-item" key={product.assetId} value={`${product}-${product.assetID}`}>{`${product}-${product.assetID}`}</li>
+    })
+
+
     return (
-        <div className="row align-center" >
-            <div className="col s12 m6">
-                <div className="card blue darken-1" >
-                    <div className="card-content white-text" >
-                        <span className="card-title" >Show Products Stock:</span>
+        <div className="container" >
+            <div className="row valign-wrapper">
+                <div className="col s6 offset-s3 valign">
+                    <div className="card blue darken-1" >
+                        <div className="card-content white-text" >
+                            <span className="card-title" >Show Products Stock:</span>
 
-                        <label className="white-text">Select Product Type:</label>
-                        <select
-                            name="productName"
-                            className="browser-default"
-                            value={productName}
-                            onChange={e => {
-                                setProductName(e.target.value);
-                            }
-                            }
-                        >
-                            <option value="" disabled >Choose Product</option>
-                            <option value="PartManufacturer">Wheel</option>
-                            <option value="CarManufacturer">Steering Wheel</option>
-                        </select>
+                            <label className="white-text">Select Product Type:</label>
+                            <select
+                                name="productName"
+                                className="browser-default"
+                                value={productName}
+                                onChange={e => {
+                                    setProductName(e.target.value);
+                                }
+                                }
+                            >
+                                <option value="" disabled >Choose Product</option>
+                                <option value="Wheel">Wheel</option>
+                                <option value="SteeringWheel">SteeringWheel</option>
+                            </select>
 
-                        <ul className="collection">
-                            {productDetails !== null && productDetails.map(
-                                product => (<li className="collection-item">{product} {product.assetID}</li>))}
-                            {/* <li className="collection-item">Alvin</li>
-                            <li className="collection-item">Alvin</li>
-                            <li className="collection-item">Alvin</li>
-                            <li className="collection-item">Alvin</li> */}
-                        </ul>
+                            {productName && <span className="card-title" >Product in Stock:</span>}
+                            <ul className="collection">
+                                {productDetails && showProducts}
 
-                    </div>
-                    <div className="card-action">
-                        <button
-                            className="btn waves-effect waves-light"
-                            type="submit"
-                            name="action"
-                            onClick={getProductDetails("Wheel")}
-                        >Get Stock Details
+                                {/* <li className="collection-item">Alvin</li>
+                                <li className="collection-item">Alvin</li>
+                                <li className="collection-item">Alvin</li>
+                                <li className="collection-item">Alvin</li> */}
+                            </ul>
+
+                        </div>
+                        <div className="card-action">
+                            <button
+                                className="btn waves-effect waves-light"
+                                type="submit"
+                                name="action"
+                                onClick={() => getProductDetails(productName)}
+                            >Get Stock Details
                             <i className="material-icons right">send</i>
-                        </button>
+                            </button>
+                        </div>
                     </div>
                 </div>
             </div>

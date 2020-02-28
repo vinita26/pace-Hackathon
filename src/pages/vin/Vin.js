@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { createGetSelector, createPropsSelector } from 'reselect-immutable-helpers';
+import { createPropsSelector } from 'reselect-immutable-helpers';
 import * as loginSelector from '../login/selectors';
 import { connect } from 'react-redux'
 import M from 'materialize-css/dist/js/materialize.min.js'
@@ -15,9 +15,6 @@ const Vin = (props) => {
         const value = {
             "wheel": assetId
         }
-        // const currentParticipant = "resource:org.nissan.dlf.PartManufacturers#" + props.participantID
-        // console.log("currentParticipant", currentParticipant)
-        // const res = await fetch(`http://ec2-34-201-220-116.compute-1.amazonaws.com:8080/api/Wheel?currentParticipant=${encodeURIComponent(currentParticipant)}`)
         const res = await fetch(`http://ec2-54-89-17-196.compute-1.amazonaws.com:8080/api/traceWheelTransactions?wheel=${assetId}`, {
             method: 'POST',
             headers: {
@@ -47,36 +44,37 @@ const Vin = (props) => {
 
 
     return (
-        <div className="row align-center" >
-            <div className="col s12 m6">
-                <div className="card blue darken-1" >
-                    <div className="card-content white-text" >
+        <div className="container" >
+            <div className="row valign-wrapper">
+                <div className="col s6 offset-s3 valign">
+                    <div className="card blue darken-1" >
+                        <div className="card-content white-text" >
 
-                        <span className="card-title" >Validate Asset:</span>
-                        <div className="row">
-                            <form className="col s12">
-                                <div className="row">
-                                    <div className="input-field col s6">
-                                        <input placeholder="value" id="asset-id" type="text" className="validate" onChange={e => setAssetId(e.target.value)} value={assetId} />
-                                        <label htmlFor="first_name" className="white-text">Asset Id:</label>
+                            <span className="card-title" >Validate Asset:</span>
+                            <div className="row">
+                                <form className="col s12">
+                                    <div className="row">
+                                        <div className="input-field col s6">
+                                            <input placeholder="Enter Asset Id" id="asset-id" type="text" className="validate" onChange={e => setAssetId(e.target.value)} value={assetId} />
+                                        </div>
                                     </div>
-                                </div>
-                            </form>
+                                </form>
+                            </div>
+
+                            {historyElements}
+
+
                         </div>
-
-                        {historyElements}
-
-
-                    </div>
-                    <div className="card-action">
-                        <button
-                            className="btn waves-effect waves-light"
-                            type="submit"
-                            name="action"
-                            onClick={() => validateAsset(assetId)}
-                        >Validate Product
+                        <div className="card-action">
+                            <button
+                                className="btn waves-effect waves-light"
+                                type="submit"
+                                name="action"
+                                onClick={() => validateAsset(assetId)}
+                            >Validate Product
                             <i className="material-icons right">send</i>
-                        </button>
+                            </button>
+                        </div>
                     </div>
                 </div>
             </div>

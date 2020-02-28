@@ -85,7 +85,7 @@
             "speedRating": "75mbps",
             "assetId": "WHBMRF001",
             "manufacturerId": "resource:org.nissan.dlf.PartManufacturer#MRB001",
-            "currentParticipant": "resource:org.nissan.dlf.PartManufacturer#MRB001"
+            "currentParticipant": "resource:org.nissan.dlf.PartManufacturers#APB002"
         },
         {
             "$class": "org.nissan.dlf.Wheel",
