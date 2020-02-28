@@ -1,0 +1,69 @@
+{
+    "PartManufacturer": [
+        {
+            "$class": "org.nissan.dlf.PartManufacturer",
+            "participantID": "APB002",
+            "name": "Apollo",
+            "location": "Bangalore"
+        },
+        {
+            "$class": "org.nissan.dlf.PartManufacturer",
+            "participantID": "MRB001",
+            "name": "MRF",
+            "location": "Bangalore"
+        },
+        {
+            "$class": "org.nissan.dlf.PartManufacturer",
+            "participantID": "MRB002",
+            "name": "MRF",
+            "location": "Bangalore"
+        }
+    ],
+    "CarManufacturer": [
+        {
+            "$class": "org.nissan.dlf.CarManufacturer",
+            "participantID": "NISINDBAN001",
+            "name": "NISSAN",
+            "location": "Bangalore"
+        }
+    ],
+    "Dealer": [
+        {
+            "$class": "org.nissan.dlf.Dealer",
+            "participantID": "SUB001",
+            "name": "Surya Nissan",
+            "location": "Bangalore"
+        }
+    ],
+    "Vin": [
+        {
+            "$class": "org.nissan.dlf.Vin",
+            "vinID": "NISSBANG000001",
+            "carManufacturer": "resource:org.nissan.dlf.CarManufacturer#NISINDBAN001",
+            "make": "2020",
+            "model": "KICKS",
+            "color": "BRONZE GREY WITH AMBER ORANGE"
+        }
+    ],
+    "SteeringWheel": [
+        {
+            "$class": "org.nissan.dlf.SteeringWheel",
+            "spocs": "R&P",
+            "size": "14.5inch",
+            "width": "7inch",
+            "dish": "10mm",
+            "assetId": "STWB001",
+            "manufacturerId": "resource:org.nissan.dlf.PartManufacturer#HOTTRACKS001"
+        }
+    ],
+    "Wheel": [
+        {
+            "$class": "org.nissan.dlf.Wheel",
+            "diameter": "16inch",
+            "width": "195mm",
+            "speedRating": "75mbps",
+            "assetId": "WHBMRF001",
+            "manufacturerId": "resource:org.nissan.dlf.PartManufacturer#MRB001"
+        }
+    ]
+}
