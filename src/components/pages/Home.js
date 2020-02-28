@@ -24,7 +24,8 @@ const Home = () => {
         <div className="Home">
             <AppNavbar />
             <Login />
-            {/* <PartManufacturer /> */}
+            {/* <PartManufacturer />
+            <CarManufacturer /> */}
         </div>
         // <Router>
         //     <div className="Home">

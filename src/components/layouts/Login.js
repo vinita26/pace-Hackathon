@@ -1,19 +1,14 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 
 const Login = () => {
 
     const [stackholderType, setStackholderType] = useState('');
     const [stackholderData, setStackholderData] = useState([]);
 
-    const login = () => {
-        console.log('Login function', stackholderType, stackholderData);
-    }
-
     const updateStackholderType = (value) => {
-        console.log("inside update")
-        console.log("type before:", value)
+        console.log("value: ", value)
         setStackholderType(value);
-        console.log("type after:", stackholderType)
+        console.log("stackholderType after setting", stackholderType);
         getStackholderData(stackholderType);
     }
 
@@ -24,6 +19,10 @@ const Login = () => {
         console.log('names', data)
         setStackholderData(data);
         console.log("stackholderData:", stackholderData)
+    }
+
+    const login = () => {
+        console.log('Login function', stackholderType, stackholderData);
     }
 
     return (
@@ -59,9 +58,9 @@ const Login = () => {
                             onChange={e => setStackholderData(e.target.value)}
                         >
                             <option value="" disabled >Choose your option</option>
-                            {stackholderData !== null && stackholderData.map(stackholder => (
+                            {/* {stackholderData !== null && stackholderData.map(stackholder => (
                                 <option key={stackholder.participantID} value={stackholder.name}>{stackholder.name}</option>
-                            ))}
+                            ))} */}
                         </select>
 
                     </div>
