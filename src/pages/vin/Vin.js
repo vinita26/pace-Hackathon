@@ -5,62 +5,44 @@ import { connect } from 'react-redux'
 import M from 'materialize-css/dist/js/materialize.min.js'
 
 
-const PartManufacturer = (props) => {
+const Vin = (props) => {
 
-    const [productName, setProductName] = useState('');
-    const [existingProductsData, setExistingProductsData] = useState([]);
+    const [assetId, setAssetId] = useState('')
+    const [historyElements, setHistoryElements] = useState([])
 
-    const getAllProducts = async () => {
-        console.log("getAllProducts")
-        const currentParticipant = "resource:org.nissan.dlf.PartManufacturers#" + props.participantID
-        console.log("currentParticipant", currentParticipant)
+    const validateAsset = async () => {
+        console.log("validateAsset")
+        const value = {
+            "wheel": assetId
+        }
+        // const currentParticipant = "resource:org.nissan.dlf.PartManufacturers#" + props.participantID
+        // console.log("currentParticipant", currentParticipant)
         // const res = await fetch(`http://ec2-34-201-220-116.compute-1.amazonaws.com:8080/api/Wheel?currentParticipant=${encodeURIComponent(currentParticipant)}`)
-        const res = await fetch(`http://localhost/5000/Wheel?currentParticipant=${encodeURIComponent(currentParticipant)}`)
-
-        const data = await res.json();
-        console.log(data)
-        setExistingProductsData(data);
-    }
-
-    const addProduct = async (productName) => {
-        let newProduct = {}
-        console.log('productName: ', productName)
-        if (productName === "Wheel") {
-            newProduct = {
-                "$class": "org.nissan.dlf." + productName,
-                "diameter": "16inch",
-                "width": "195mm",
-                "speedRating": "75mbps",
-                "assetId": "4",
-                "manufacturerId": props.participantID,
-                "currentParticipant": props.participantID
-            }
-        }
-        else if (productName === "SteeringWheel") {
-            newProduct = {
-                "$class": "org.nissan.dlf." + productName,
-                "spocs": "R&P",
-                "size": "14.5inch",
-                "width": "7inch",
-                "dish": "10mm",
-                "assetId": "4",
-                "manufacturerId": props.participantID,
-                "currentParticipant": props.participantID
-            }
-        }
-
-        const res = await fetch(`http://ec2-34-201-220-116.compute-1.amazonaws.com:8080/api/${productName}`, {
-            //const res = await fetch(`http://localhost:5000/${productName}`, {
+        const res = await fetch(`http://ec2-54-89-17-196.compute-1.amazonaws.com:8080/api/traceWheelTransactions?wheel=${assetId}`, {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json'
             },
-            body: JSON.stringify(newProduct)
+            body: JSON.stringify(value)
 
         });
         const data = await res.json();
-        M.toast({ html: "New Product added" });
-        console.log('newproduct', data);
+        console.log(data)
+        if (data.length > 0) {
+            M.toast({ html: "Product exists in Blockchain Network" })
+        }
+        else {
+            M.toast({ html: "Product doesn't exists in Blockchain Network" })
+        }
+        const historyElements = data.map(value => {
+            const parseValue = JSON.parse(value)
+            const isVin = Object.keys(parseValue).includes("vin")
+            const part = parseValue.currentParticipant
+            return !isVin ? <span>{`${part.substring(part.lastIndexOf('.') + 1)}`} -> </span> : <span>{`${parseValue.vin.substring(parseValue.vin.lastIndexOf('.') + 1)}`}</span>
+            // console.log(JSON.parse(value))
+        }
+        )
+        setHistoryElements(historyElements)
     }
 
 
@@ -70,33 +52,19 @@ const PartManufacturer = (props) => {
                 <div className="card blue darken-1" >
                     <div className="card-content white-text" >
 
-                        <span className="card-title" >Current Stock Product:</span>
-                        <a className="waves-effect waves-light btn" onClick={getAllProducts}>Get</a>
-                        <ul className="collection">
-                            {existingProductsData && (existingProductsData.map(product => (
-                                <li className="collection-item" key={product.assetId}>{product.$class}
-                                    <a className="waves-effect waves-light btn" >Assign</a>
-                                </li>
-                            )))}
-                        </ul>
+                        <span className="card-title" >Validate Asset:</span>
+                        <div className="row">
+                            <form className="col s12">
+                                <div className="row">
+                                    <div className="input-field col s6">
+                                        <input placeholder="value" id="asset-id" type="text" className="validate" onChange={e => setAssetId(e.target.value)} value={assetId} />
+                                        <label htmlFor="first_name" className="white-text">Asset Id:</label>
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
 
-
-                        <span className="card-title" >Add New Product:</span>
-                        <label className="white-text">Select Product Type:</label>
-                        <select
-                            name="productName"
-                            className="browser-default"
-                            value={productName}
-                            onChange={e => {
-                                setProductName(e.target.value);
-                            }
-                            }
-                        >
-                            <option value="" disabled >Choose your option</option>
-                            <option>Wheel</option>
-                            <option>SteeringWheel</option>
-                        </select>
-
+                        {historyElements}
 
 
                     </div>
@@ -105,9 +73,9 @@ const PartManufacturer = (props) => {
                             className="btn waves-effect waves-light"
                             type="submit"
                             name="action"
-                            onClick={() => addProduct(productName)}
-                        >Add Product
-                            <i className="material-icons right">add</i>
+                            onClick={() => validateAsset(assetId)}
+                        >Validate Product
+                            <i className="material-icons right">send</i>
                         </button>
                     </div>
                 </div>
@@ -120,4 +88,4 @@ const mapStateToProps = createPropsSelector({
 })
 
 export default connect(
-    mapStateToProps)(PartManufacturer)
+    mapStateToProps)(Vin)

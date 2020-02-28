@@ -15,7 +15,7 @@ const PartManufacturer = (props) => {
         const currentParticipant = "resource:org.nissan.dlf.PartManufacturers#" + props.participantID
         console.log("currentParticipant", currentParticipant)
         // const res = await fetch(`http://ec2-34-201-220-116.compute-1.amazonaws.com:8080/api/Wheel?currentParticipant=${encodeURIComponent(currentParticipant)}`)
-        const res = await fetch(`http://localhost/5000/Wheel?currentParticipant=${encodeURIComponent(currentParticipant)}`)
+        const res = await fetch(`http://localhost/5000/Wheel?currentParticipant=${currentParticipant}`)
 
         const data = await res.json();
         console.log(data)
