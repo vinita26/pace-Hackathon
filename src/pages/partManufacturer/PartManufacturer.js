@@ -80,10 +80,6 @@ const PartManufacturer = (props) => {
                             )))}
                         </ul>
 
-                        {/* {existingProductsData && existingProductsData.map(product => {
-                            <li className="collection-item">{product.name}</li>
-                        })} */}
-
 
                         <span className="card-title" >Add New Product:</span>
                         <label className="white-text">Select Product Type:</label>

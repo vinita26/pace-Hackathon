@@ -8,7 +8,7 @@ const CarManufacturer = () => {
     const getProductDetails = async (productName) => {
         console.log('productName: ', productName);
 
-        const res = await fetch(`http://localhost:5000/${productName}`);
+        const res = await fetch(`http://ec2-34-201-220-116.compute-1.amazonaws.com:8080/api/${productName}`);
         const data = await res.json();
         console.log('Product detail: ', data);
         setStockValue(data.length)
@@ -41,7 +41,7 @@ const CarManufacturer = () => {
                                 <div className="row">
                                     <div className="input-field col s6">
                                         <input placeholder="Value" id="total_stock_value" type="text" className="validate" value={stockValue} />
-                                        <label htmlFor="stock_value" className="white-text">Total items:</label>
+                                        {/* <label htmlFor="stock_value" className="white-text">Total items:</label> */}
                                     </div>
                                 </div>
                             </form>
@@ -53,7 +53,7 @@ const CarManufacturer = () => {
                             className="btn waves-effect waves-light"
                             type="submit"
                             name="action"
-                            onClick={getProductDetails()}
+                            onClick={() => getProductDetails(productName)}
                         >Get Stock Details
                             <i className="material-icons right">send</i>
                         </button>
