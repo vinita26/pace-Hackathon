@@ -9,6 +9,7 @@ const Vin = (props) => {
 
     const [assetId, setAssetId] = useState('')
     const [historyElements, setHistoryElements] = useState([])
+    const [historyLabel, setHistoryLabel] = useState('')
 
     const validateAsset = async () => {
         console.log("validateAsset")
@@ -25,6 +26,7 @@ const Vin = (props) => {
         });
         const data = await res.json();
         console.log(data)
+
         if (data.length > 0) {
             M.toast({ html: "Product exists in Blockchain Network" })
         }
@@ -35,7 +37,8 @@ const Vin = (props) => {
             const parseValue = JSON.parse(value)
             const isVin = Object.keys(parseValue).includes("vin")
             const part = parseValue.currentParticipant
-            return !isVin ? <span>{`${part.substring(part.lastIndexOf('.') + 1)}`} -> </span> : <span>{`${parseValue.vin.substring(parseValue.vin.lastIndexOf('.') + 1)}`}</span>
+            return !isVin ? <li>{`${part.substring(part.lastIndexOf('.') + 1)}`}  </li> : <li>{`${parseValue.vin.substring(parseValue.vin.lastIndexOf('.') + 1)}`}</li>
+
             //console.log("parseValue:", parseValue)
             // return (
             //     <div>
@@ -52,6 +55,11 @@ const Vin = (props) => {
         }
         )
         setHistoryElements(historyElements)
+
+        const historyLabel = () => {
+            return (<label className="white-text" > <strong>Part History:</strong></label>)
+        }
+        setHistoryLabel(historyLabel)
     }
 
 
@@ -73,6 +81,7 @@ const Vin = (props) => {
                                 </form>
                             </div>
 
+                            {historyLabel}
                             {historyElements}
 
 
