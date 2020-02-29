@@ -36,7 +36,19 @@ const Vin = (props) => {
             const isVin = Object.keys(parseValue).includes("vin")
             const part = parseValue.currentParticipant
             return !isVin ? <span>{`${part.substring(part.lastIndexOf('.') + 1)}`} -> </span> : <span>{`${parseValue.vin.substring(parseValue.vin.lastIndexOf('.') + 1)}`}</span>
-            // console.log(JSON.parse(value))
+            //console.log("parseValue:", parseValue)
+            // return (
+            //     <div>
+            //         <label className="white-text">Part History:</label>
+            //         <nav>
+            //             <div className="nav-wrapper green">
+            //                 <div className="col s12">
+            //                     !isVin ? <li>{`${part.substring(part.lastIndexOf('.') + 1)}`}</li> : <li>{`${parseValue.vin.substring(parseValue.vin.lastIndexOf('.') + 1)}`}</li>
+
+            //                 </div>
+            //             </div>
+            //         </nav>
+            //     </div>)
         }
         )
         setHistoryElements(historyElements)

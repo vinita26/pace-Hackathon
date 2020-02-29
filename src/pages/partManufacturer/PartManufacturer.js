@@ -13,13 +13,13 @@ const PartManufacturer = (props) => {
     const getAllProducts = async () => {
 
         console.log("getAllProducts")
-        const currentParticipant = "resource:org.nissan.dlf.PartManufacturers#" + props.participantID
+        const currentParticipant = "resource:org.nissan.dlf.PartManufacturer#" + props.participantID
         console.log("currentParticipant", currentParticipant)
-        // const res = await fetch(`http://ec2-34-201-220-116.compute-1.amazonaws.com:8080/api/Wheel?currentParticipant=${encodeURIComponent(currentParticipant)}`)
-        const res = await fetch(`http://localhost/5000/Wheel?currentParticipant=${encodeURIComponent(currentParticipant)}`)
+        const res = await fetch(`http://ec2-54-89-17-196.compute-1.amazonaws.com:8080/api/queries/selectAllWheelsByCurrentParticipant?currentParticipant=${encodeURIComponent(currentParticipant)}`)
+        //const res = await fetch(`http://localhost/5000/Wheel?currentParticipant=${encodeURIComponent(currentParticipant)}`)
 
         const data = await res.json();
-        console.log(data)
+        console.log("data:", data)
         setExistingProductsData(data);
     }
 
@@ -32,7 +32,7 @@ const PartManufacturer = (props) => {
                 "diameter": "16inch",
                 "width": "195mm",
                 "speedRating": "75mbps",
-                "assetId": "5",
+                "assetId": "7",
                 "manufacturerId": props.participantID,
                 "currentParticipant": props.participantID
             }
@@ -44,14 +44,14 @@ const PartManufacturer = (props) => {
                 "size": "14.5inch",
                 "width": "7inch",
                 "dish": "10mm",
-                "assetId": "4",
+                "assetId": "7",
                 "manufacturerId": props.participantID,
                 "currentParticipant": props.participantID
             }
         }
 
-        // const res = await fetch(`http://ec2-34-201-220-116.compute-1.amazonaws.com:8080/api/${productName}`, {
-        const res = await fetch(`http://localhost:5000/${productName}`, {
+        const res = await fetch(`http://ec2-54-89-17-196.compute-1.amazonaws.com:8080/api/${productName}`, {
+            //const res = await fetch(`http://localhost:5000/${productName}`, {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json'
@@ -75,8 +75,10 @@ const PartManufacturer = (props) => {
                             <button className="waves-effect waves-light btn" onClick={getAllProducts}>Get</button>
                             <ul className="collection">
                                 {existingProductsData && (existingProductsData.map(product => (
-                                    <li className="collection-item" key={product.assetId}>{product.$class}
-                                        <a className="waves-effect waves-light btn" >Assign</a>
+                                    // <li className="collection-item" key={product.assetId} value={product.assetId}>
+                                    // <div>
+                                    <li key={product.assetId} value={product.assetId}>
+                                        {product.assetId}
                                     </li>
                                 )))}
                             </ul>

@@ -15,9 +15,11 @@ const Dealer = () => {
     }
 
     const showProducts = productDetails.map(product => {
+        console.log('array product', product[0])
         console.log("product", product)
         console.log("asset", product.assetId)
-        return <li className="collection-item" key={product.assetId} value={`${product}-${product.assetID}`}>{`${product}-${product.assetID}`}</li>
+        return (
+            <li key={product.assetId} value={product.assetId}>{product.assetId}</li>)
     })
 
 
@@ -44,7 +46,7 @@ const Dealer = () => {
                                 <option value="SteeringWheel">SteeringWheel</option>
                             </select>
 
-                            {productName && <span className="card-title" >Product in Stock:</span>}
+                            {productName && <span className="card-title" >Products in Stock:</span>}
                             <ul className="collection">
                                 {productDetails && showProducts}
 
