@@ -16,7 +16,7 @@ const Vin = (props) => {
         const value = {
             "wheel": assetId
         }
-        const res = await fetch(`http://ec2-54-89-17-196.compute-1.amazonaws.com:8080/api/traceWheelTransactions?wheel=${assetId}`, {
+        const res = await fetch(`http://ec2-54-211-125-42.compute-1.amazonaws.com:8080/api/traceWheelTransactions?wheel=${assetId}`, {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json'

@@ -15,7 +15,7 @@ const PartManufacturer = (props) => {
         console.log("getAllProducts")
         const currentParticipant = "resource:org.nissan.dlf.PartManufacturer#" + props.participantID
         console.log("currentParticipant", currentParticipant)
-        const res = await fetch(`http://ec2-54-89-17-196.compute-1.amazonaws.com:8080/api/queries/selectAllWheelsByCurrentParticipant?currentParticipant=${encodeURIComponent(currentParticipant)}`)
+        const res = await fetch(`http://ec2-54-211-125-42.compute-1.amazonaws.com:8080/api/queries/Wheel?currentParticipant=${encodeURIComponent(currentParticipant)}`)
         //const res = await fetch(`http://localhost/5000/Wheel?currentParticipant=${encodeURIComponent(currentParticipant)}`)
 
         const data = await res.json();
@@ -32,7 +32,7 @@ const PartManufacturer = (props) => {
                 "diameter": "16inch",
                 "width": "195mm",
                 "speedRating": "75mbps",
-                "assetId": "9",
+                "assetId": "12",
                 "manufacturerId": props.participantID,
                 "currentParticipant": props.participantID
             }
@@ -44,13 +44,14 @@ const PartManufacturer = (props) => {
                 "size": "14.5inch",
                 "width": "7inch",
                 "dish": "10mm",
-                "assetId": "9",
+                "assetId": "12",
                 "manufacturerId": props.participantID,
                 "currentParticipant": props.participantID
             }
         }
 
-        const res = await fetch(`http://ec2-54-89-17-196.compute-1.amazonaws.com:8080/api/${productName}`, {
+        console.log('product', newProduct);
+        const res = await fetch(`http://ec2-54-211-125-42.compute-1.amazonaws.com:8080/api/${productName}`, {
             //const res = await fetch(`http://localhost:5000/${productName}`, {
             method: 'POST',
             headers: {

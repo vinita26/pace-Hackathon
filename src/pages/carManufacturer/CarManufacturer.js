@@ -3,6 +3,8 @@ import { connect } from 'react-redux';
 import { createPropsSelector } from 'reselect-immutable-helpers';
 import * as loginSelector from '../login/selectors';
 
+//const url = "http://ec2-54-211-125-42.compute-1.amazonaws.com:8080/";
+
 const CarManufacturer = (props) => {
 
     const [productName, setProductName] = useState('');
@@ -13,10 +15,10 @@ const CarManufacturer = (props) => {
         let res = ''
         const currentParticipant = "resource:org.nissan.dlf.CarManufacturer#" + props.participantID
         if (productName === "Wheel") {
-            res = await fetch(`http://ec2-54-89-17-196.compute-1.amazonaws.com:8080/api/queries/selectAllWheelsByCurrentParticipant?currentParticipant=${encodeURIComponent(currentParticipant)}`);
+            res = await fetch(`http://ec2-54-211-125-42.compute-1.amazonaws.com:8080/api/queries/selectAllWheelsByCurrentParticipant?currentParticipant=${encodeURIComponent(currentParticipant)}`);
         }
         else {
-            res = await fetch(`http://ec2-54-89-17-196.compute-1.amazonaws.com:8080/api/queries/selectAllSteeringWheelsByCurrentParticipant?currentParticipant=${encodeURIComponent(currentParticipant)}`)
+            res = await fetch(`http://ec2-54-211-125-42.compute-1.amazonaws.com:8080/api/queries/selectAllSteeringWheelsByCurrentParticipant?currentParticipant=${encodeURIComponent(currentParticipant)}`)
         }
         //const res = await fetch(`http://ec2-54-89-17-196.compute-1.amazonaws.com:8080/api/queries/selectAllWheelsByCurrentParticipant?currentParticipant=${encodeURIComponent(currentParticipant)}`)
         // const res = await fetch(`http://localhost:5000/${productName}`);
