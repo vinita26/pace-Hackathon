@@ -32,7 +32,7 @@ const PartManufacturer = (props) => {
                 "diameter": "16inch",
                 "width": "195mm",
                 "speedRating": "75mbps",
-                "assetId": "7",
+                "assetId": "9",
                 "manufacturerId": props.participantID,
                 "currentParticipant": props.participantID
             }
@@ -44,7 +44,7 @@ const PartManufacturer = (props) => {
                 "size": "14.5inch",
                 "width": "7inch",
                 "dish": "10mm",
-                "assetId": "7",
+                "assetId": "9",
                 "manufacturerId": props.participantID,
                 "currentParticipant": props.participantID
             }
@@ -80,6 +80,8 @@ const PartManufacturer = (props) => {
                                     <li key={product.assetId} value={product.assetId}>
                                         {product.assetId}
                                     </li>
+                                    // <button className="col s6 green">Assign</button>
+                                    // </div>
                                 )))}
                             </ul>
 

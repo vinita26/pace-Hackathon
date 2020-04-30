@@ -12,7 +12,7 @@ const CarManufacturer = (props) => {
         console.log('productName: ', productName);
         let res = ''
         const currentParticipant = "resource:org.nissan.dlf.CarManufacturer#" + props.participantID
-        if (productName == "Wheel") {
+        if (productName === "Wheel") {
             res = await fetch(`http://ec2-54-89-17-196.compute-1.amazonaws.com:8080/api/queries/selectAllWheelsByCurrentParticipant?currentParticipant=${encodeURIComponent(currentParticipant)}`);
         }
         else {
