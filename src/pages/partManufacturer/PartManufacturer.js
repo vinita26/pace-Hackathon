@@ -13,9 +13,10 @@ const PartManufacturer = (props) => {
     const getAllProducts = async () => {
 
         console.log("getAllProducts")
-        const currentParticipant = "resource:org.nissan.dlf.PartManufacturer#" + props.participantID
+        //const currentParticipant = "resource:org.nissan.dlf.PartManufacturer#" + props.participantID
+        const currentParticipant = "resource:org.nissan.dlf.AutoParticipant#" + props.participantID
         console.log("currentParticipant", currentParticipant)
-        const res = await fetch(`http://ec2-54-211-125-42.compute-1.amazonaws.com:8080/api/queries/Wheel?currentParticipant=${encodeURIComponent(currentParticipant)}`)
+        let res = await fetch(`http://ec2-54-211-125-42.compute-1.amazonaws.com:8080/api/queries/selectAllWheelsByCurrentParticipant?currentParticipant=${encodeURIComponent(currentParticipant)}`)
         //const res = await fetch(`http://localhost/5000/Wheel?currentParticipant=${encodeURIComponent(currentParticipant)}`)
 
         const data = await res.json();
@@ -32,7 +33,7 @@ const PartManufacturer = (props) => {
                 "diameter": "16inch",
                 "width": "195mm",
                 "speedRating": "75mbps",
-                "assetId": "12",
+                "assetId": "WHBAP016",
                 "manufacturerId": props.participantID,
                 "currentParticipant": props.participantID
             }
@@ -44,7 +45,7 @@ const PartManufacturer = (props) => {
                 "size": "14.5inch",
                 "width": "7inch",
                 "dish": "10mm",
-                "assetId": "12",
+                "assetId": "SWHBAP016",
                 "manufacturerId": props.participantID,
                 "currentParticipant": props.participantID
             }
@@ -76,13 +77,26 @@ const PartManufacturer = (props) => {
                             <button className="waves-effect waves-light btn" onClick={getAllProducts}>Get</button>
                             <ul className="collection">
                                 {existingProductsData && (existingProductsData.map(product => (
-                                    // <li className="collection-item" key={product.assetId} value={product.assetId}>
-                                    // <div>
-                                    <li key={product.assetId} value={product.assetId}>
-                                        {product.assetId}
+                                    // <li key={product.assetId} value={product.assetId}>
+                                    //     {product.assetId}
+                                    // </li>
+                                    <li key={product.assetId}>
+                                        <table>
+                                            <tbody>
+                                                <tr>
+                                                    <td>
+                                                        Wheel Id:
+                                                </td>
+                                                    <td value={product.assetId}>
+                                                        {product.assetId}
+                                                    </td>
+                                                </tr>
+
+                                            </tbody>
+
+                                        </table>
+
                                     </li>
-                                    // <button className="col s6 green">Assign</button>
-                                    // </div>
                                 )))}
                             </ul>
 

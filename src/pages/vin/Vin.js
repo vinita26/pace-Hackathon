@@ -25,7 +25,7 @@ const Vin = (props) => {
 
         });
         const data = await res.json();
-        console.log(data)
+        console.log('vin data:', data)
 
         if (data.length > 0) {
             M.toast({ html: "Product exists in Blockchain Network" })
