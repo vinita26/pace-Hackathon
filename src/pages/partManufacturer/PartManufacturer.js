@@ -12,15 +12,33 @@ const PartManufacturer = (props) => {
 
     const getAllProducts = async () => {
 
-        console.log("getAllProducts")
+        getAllWheels();
+        //getAllSteeringwheels();
+    }
+
+    const getAllWheels = async () => {
+        console.log("getAllWheels")
         //const currentParticipant = "resource:org.nissan.dlf.PartManufacturer#" + props.participantID
         const currentParticipant = "resource:org.nissan.dlf.AutoParticipant#" + props.participantID
         console.log("currentParticipant", currentParticipant)
-        let res = await fetch(`http://ec2-54-211-125-42.compute-1.amazonaws.com:8080/api/queries/selectAllWheelsByCurrentParticipant?currentParticipant=${encodeURIComponent(currentParticipant)}`)
+        let res = await fetch(`http://ec2-52-91-248-86.compute-1.amazonaws.com:8080/api/queries/selectAllWheelsByCurrentParticipant?currentParticipant=${encodeURIComponent(currentParticipant)}`)
         //const res = await fetch(`http://localhost/5000/Wheel?currentParticipant=${encodeURIComponent(currentParticipant)}`)
 
         const data = await res.json();
-        console.log("data:", data)
+        console.log("wheels data:", data)
+        setExistingProductsData(data);
+    }
+
+    const getAllSteeringwheels = async () => {
+        console.log("getAllWheels")
+        //const currentParticipant = "resource:org.nissan.dlf.PartManufacturer#" + props.participantID
+        const currentParticipant = "resource:org.nissan.dlf.AutoParticipant#" + props.participantID
+        console.log("currentParticipant", currentParticipant)
+        let res = await fetch(`http://ec2-52-91-248-86.compute-1.amazonaws.com:8080/api/queries/selectAvailableSteeringWheelsByCurrentParticipant?currentParticipant=${encodeURIComponent(currentParticipant)}`)
+        //const res = await fetch(`http://localhost/5000/Wheel?currentParticipant=${encodeURIComponent(currentParticipant)}`)
+
+        const data = await res.json();
+        console.log("steering wheels data:", data)
         setExistingProductsData(data);
     }
 
@@ -33,7 +51,7 @@ const PartManufacturer = (props) => {
                 "diameter": "16inch",
                 "width": "195mm",
                 "speedRating": "75mbps",
-                "assetId": "WHBAP016",
+                "assetId": "WHBAP022",
                 "manufacturerId": props.participantID,
                 "currentParticipant": props.participantID
             }
@@ -45,14 +63,14 @@ const PartManufacturer = (props) => {
                 "size": "14.5inch",
                 "width": "7inch",
                 "dish": "10mm",
-                "assetId": "SWHBAP016",
+                "assetId": "SWHBAP022",
                 "manufacturerId": props.participantID,
                 "currentParticipant": props.participantID
             }
         }
 
         console.log('product', newProduct);
-        const res = await fetch(`http://ec2-54-211-125-42.compute-1.amazonaws.com:8080/api/${productName}`, {
+        const res = await fetch(`http://ec2-52-91-248-86.compute-1.amazonaws.com:8080/api/${productName}`, {
             //const res = await fetch(`http://localhost:5000/${productName}`, {
             method: 'POST',
             headers: {
@@ -85,7 +103,7 @@ const PartManufacturer = (props) => {
                                             <tbody>
                                                 <tr>
                                                     <td>
-                                                        Wheel Id:
+                                                        Id:
                                                 </td>
                                                     <td value={product.assetId}>
                                                         {product.assetId}

@@ -8,7 +8,7 @@ const Dealer = () => {
     const getProductDetails = async (productName) => {
         console.log('productName: ', productName);
 
-        const res = await fetch(`http://ec2-54-211-125-42.compute-1.amazonaws.com:8080/api/${productName}`);
+        const res = await fetch(`http://ec2-52-91-248-86.compute-1.amazonaws.com:8080/api/${productName}`);
         // const res = await fetch(`http://ec2-54-211-125-42.compute-1.amazonaws.com:8080/api/queries/selectAllWheels'`);
         const data = await res.json();
         console.log('Product detail: ', data);

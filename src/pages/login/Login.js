@@ -11,7 +11,7 @@ const Login = (props) => {
 
     const getStakeHolderData = async (stakeHolderType) => {
         // console.log('stakeHolderType value: ', stakeholderType)
-        const res = await fetch(`http://ec2-54-211-125-42.compute-1.amazonaws.com:8080/api/${stakeHolderType}`);
+        const res = await fetch(`http://ec2-52-91-248-86.compute-1.amazonaws.com:8080/api/${stakeHolderType}`);
         //const res = await fetch(`http://localhost:5000/${stakeHolderType}`);
         const data = await res.json();
         // console.log('names', data)
