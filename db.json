@@ -33,6 +33,12 @@
             "participantID": "SUB001",
             "name": "Surya Nissan",
             "location": "Bangalore"
+        },
+        {
+            "$class": "org.nissan.dlf.Dealer",
+            "participantID": "SUB002",
+            "name": "Apple Nissan",
+            "location": "Mumbai"
         }
     ],
     "Vin": [
