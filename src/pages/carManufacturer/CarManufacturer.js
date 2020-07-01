@@ -13,16 +13,16 @@ const CarManufacturer = (props) => {
     const getProductDetails = async (productName) => {
         console.log('productName: ', productName);
         let res = ''
-        // const currentParticipant = "resource:org.nissan.dlf.AutoParticipant#" + props.participantID
-        const currentParticipant = "resource:org.nissan.dlf.AutoParticipant#" + 'APBB001'
+        const currentParticipant = "resource:org.nissan.dlf.AutoParticipant#" + props.participantID
+        //const currentParticipant = "resource:org.nissan.dlf.AutoParticipant#" + 'APBB001'
         if (productName === "Wheel") {
-            res = await fetch(`http://ec2-52-91-248-86.compute-1.amazonaws.com:8080/api/queries/selectAllWheelsByCurrentParticipant?currentParticipant=${encodeURIComponent(currentParticipant)}`);
+            res = await fetch(`http://ec2-34-229-55-132.compute-1.amazonaws.com:3000/api/queries/selectAllWheelsByCurrentParticipant?currentParticipant=${encodeURIComponent(currentParticipant)}`);
             //res = await fetch(`http://ec2-54-211-125-42.compute-1.amazonaws.com:8080/api/queries/selectAllWheelsByCurrentParticipant`);
         }
         else {
-            res = await fetch(`http://ec2-52-91-248-86.compute-1.amazonaws.com:8080/api/queries/selectAllSteeringWheelsByCurrentParticipant?currentParticipant=${encodeURIComponent(currentParticipant)}`)
+            res = await fetch(`http://ec2-34-229-55-132.compute-1.amazonaws.com:3000/api/queries/selectAllSteeringWheelsByCurrentParticipant?currentParticipant=${encodeURIComponent(currentParticipant)}`)
         }
-        // const res = await fetch(`http://localhost:5000/${productName}`);
+        // res = await fetch(`http://localhost:5000/${productName}`);
         const data = await res.json();
         console.log('Product detail: ', data);
         setStockValue(data.length + 2);

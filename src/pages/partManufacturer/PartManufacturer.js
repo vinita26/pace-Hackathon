@@ -21,7 +21,7 @@ const PartManufacturer = (props) => {
         //const currentParticipant = "resource:org.nissan.dlf.PartManufacturer#" + props.participantID
         const currentParticipant = "resource:org.nissan.dlf.AutoParticipant#" + props.participantID
         console.log("currentParticipant", currentParticipant)
-        let res = await fetch(`http://ec2-52-91-248-86.compute-1.amazonaws.com:8080/api/queries/selectAllWheelsByCurrentParticipant?currentParticipant=${encodeURIComponent(currentParticipant)}`)
+        let res = await fetch(`http://ec2-34-229-55-132.compute-1.amazonaws.com:3000/api/queries/selectAllWheelsByCurrentParticipant?currentParticipant=${encodeURIComponent(currentParticipant)}`)
         //const res = await fetch(`http://localhost/5000/Wheel?currentParticipant=${encodeURIComponent(currentParticipant)}`)
 
         const data = await res.json();
@@ -34,7 +34,7 @@ const PartManufacturer = (props) => {
         //const currentParticipant = "resource:org.nissan.dlf.PartManufacturer#" + props.participantID
         const currentParticipant = "resource:org.nissan.dlf.AutoParticipant#" + props.participantID
         console.log("currentParticipant", currentParticipant)
-        let res = await fetch(`http://ec2-52-91-248-86.compute-1.amazonaws.com:8080/api/queries/selectAvailableSteeringWheelsByCurrentParticipant?currentParticipant=${encodeURIComponent(currentParticipant)}`)
+        let res = await fetch(`http://ec2-34-229-55-132.compute-1.amazonaws.com:3000/api/queries/selectAvailableSteeringWheelsByCurrentParticipant?currentParticipant=${encodeURIComponent(currentParticipant)}`)
         //const res = await fetch(`http://localhost/5000/Wheel?currentParticipant=${encodeURIComponent(currentParticipant)}`)
 
         const data = await res.json();
@@ -70,7 +70,7 @@ const PartManufacturer = (props) => {
         }
 
         console.log('product', newProduct);
-        const res = await fetch(`http://ec2-52-91-248-86.compute-1.amazonaws.com:8080/api/${productName}`, {
+        const res = await fetch(`http://ec2-34-229-55-132.compute-1.amazonaws.com:3000/api/${productName}`, {
             //const res = await fetch(`http://localhost:5000/${productName}`, {
             method: 'POST',
             headers: {
@@ -91,7 +91,7 @@ const PartManufacturer = (props) => {
                     <div className="card blue darken-1" >
                         <div className="card-content white-text" >
 
-                            <span className="card-title" >Current Product Stock:</span>
+                            <span className="card-title" >Current Stock:</span>
                             <button className="waves-effect waves-light btn" onClick={getAllProducts}>Get</button>
                             <ul className="collection">
                                 {existingProductsData && (existingProductsData.map(product => (
@@ -120,7 +120,7 @@ const PartManufacturer = (props) => {
 
 
                             <span className="card-title" >Add New Product:</span>
-                            <label className="white-text">Select Product Type:</label>
+                            <label className="white-text">Select Product:</label>
                             <select
                                 name="productName"
                                 className="browser-default"
@@ -130,7 +130,7 @@ const PartManufacturer = (props) => {
                                 }
                                 }
                             >
-                                <option value="" disabled >Choose your option</option>
+                                <option value="" disabled >Select</option>
                                 <option>Wheel</option>
                                 <option>SteeringWheel</option>
                             </select>

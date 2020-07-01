@@ -10,11 +10,11 @@ const Login = (props) => {
 
 
     const getStakeHolderData = async (stakeHolderType) => {
-        // console.log('stakeHolderType value: ', stakeholderType)
-        // const res = await fetch(`http://ec2-52-91-248-86.compute-1.amazonaws.com:8080/api/${stakeHolderType}`);
-        const res = await fetch(`http://localhost:5000/${stakeHolderType}`);
+        console.log('stakeHolderType value: ', stakeHolderType)
+        const res = await fetch(`http://ec2-34-229-55-132.compute-1.amazonaws.com:3000/api/${stakeHolderType}`);
+        //const res = await fetch(`http://localhost:5000/${stakeHolderType}`);
         const data = await res.json();
-        // console.log('names', data)
+        console.log('names', data)
         setStakeHolderData(data);
         setStakeHolderType(stakeHolderType);
         // console.log("stakeholderData:", stakeholderData)
@@ -69,21 +69,21 @@ const Login = (props) => {
                         <div className="card-content white-text" >
                             <span className="card-title" >Login As:</span>
 
-                            <label className="white-text">Select stakeHolder Type</label>
+                            <label className="white-text">Stackholder Type</label>
                             <select
                                 name="stakeholderType"
                                 className="browser-default"
                                 value={stakeHolderType}
                                 onChange={e => getStakeHolderData(e.target.value)}
                             >
-                                <option value="" disabled >Choose your option</option>
+                                <option value="" disabled >Select</option>
                                 <option value="PartManufacturer">PartManufacturer</option>
                                 <option value="CarManufacturer">CarManufacturer</option>
                                 <option value="Dealer">Dealer</option>
                                 <option value="Vin">Vin</option>
                             </select>
 
-                            <label className="white-text">Select stakeHolder Name</label>
+                            <label className="white-text">Stackholder Name</label>
                             <select
                                 name="stakeHolderNames"
                                 className="browser-default"
@@ -93,7 +93,7 @@ const Login = (props) => {
                                 }}
                             >
 
-                                <option value="" disabled >Choose your option</option>
+                                <option value="" disabled >Select</option>
                                 {stakeHolderData && stakeHolderOptions}
                             </select>
 

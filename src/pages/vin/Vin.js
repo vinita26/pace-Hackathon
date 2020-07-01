@@ -8,6 +8,7 @@ import M from 'materialize-css/dist/js/materialize.min.js'
 const Vin = (props) => {
 
     const [assetId, setAssetId] = useState('')
+    const [locationName, setLocationName] = useState('');
     const [historyElements, setHistoryElements] = useState([])
     const [historyLabel, setHistoryLabel] = useState('')
 
@@ -16,7 +17,7 @@ const Vin = (props) => {
         const value = {
             "wheel": assetId
         }
-        const res = await fetch(`http://ec2-52-91-248-86.compute-1.amazonaws.com:8080/api/traceWheelTransactions?wheel=${assetId}`, {
+        const res = await fetch(`http://ec2-34-229-55-132.compute-1.amazonaws.com:3000/api/traceWheelTransactions?wheel=${assetId}`, {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json'
@@ -35,9 +36,21 @@ const Vin = (props) => {
         }
         const historyElements = data.map(value => {
             const parseValue = JSON.parse(value)
+            let part=""
+            console.log("parsevalue",  parseValue);
+            
             const isVin = Object.keys(parseValue).includes("vin")
-            const part = parseValue.currentParticipant
-            return !isVin ? <li>{`${part.substring(part.lastIndexOf('.') + 1)}`}  </li> : <li>{`${parseValue.vin.substring(parseValue.vin.lastIndexOf('.') + 1)}`}</li>
+            console.log("isVin", isVin);
+            
+            if(parseValue.currentParticipant) {
+                part = parseValue.currentParticipant.substring(parseValue.currentParticipant.lastIndexOf('.') + 1);
+            }
+            else
+                part = parseValue.manufacturerId.substring(parseValue.manufacturerId.lastIndexOf('.') + 1);
+            
+            console.log("part:",part);
+            
+            return !isVin ? <li key="">{part}  </li> : <li>{`${parseValue.vin.substring(parseValue.vin.lastIndexOf('.') + 1)}`}</li>
 
             //console.log("parseValue:", parseValue)
             // return (
@@ -73,11 +86,40 @@ const Vin = (props) => {
                             <span className="card-title" >Validate Asset:</span>
                             <div className="row">
                                 <form className="col s12">
+                                    <span> <strong>Asset ID:</strong></span>
+                                    <input placeholder="Enter Asset Id" id="asset-id" type="text" className="validate" onChange={e => setAssetId(e.target.value)} value={assetId} />
+                                </form>
+                            </div>
+
+                            <div className="row">
+                                <form className="col s12">
                                     <div className="row">
-                                        <div className="input-field col s6">
-                                            <input placeholder="Enter Asset Id" id="asset-id" type="text" className="validate" onChange={e => setAssetId(e.target.value)} value={assetId} />
-                                        </div>
+                                        <span> <strong>Purchase Location:</strong></span>
+                                        <select
+                                                name="locationName"
+                                                className="browser-default"
+                                                value={locationName}
+                                                onChange={e => {
+                                                    setLocationName(e.target.value);
+                                                }
+                                                }
+                                            >
+                                                <option value="" disabled >Select</option>
+                                                <option>Bangalore</option>
+                                                <option>Delhi</option>
+                                                <option>Pune</option>
+                                                <option>Kolkata</option>
+                                                <option>Chennai</option>
+                                        </select>
                                     </div>
+                                </form>
+                            </div>
+
+                            <div className="row">
+                                <form className="col s12">
+                                        <span> <strong>Seller Code:</strong></span>
+                                        <input placeholder="Value" id="seller_code" type="text" className="validate white-text"/>
+                                        
                                 </form>
                             </div>
 

@@ -14,8 +14,8 @@
         },
         {
             "$class": "org.nissan.dlf.PartManufacturer",
-            "participantID": "MRB002",
-            "name": "MRF2",
+            "participantID": "TKT001",
+            "name": "Takata",
             "location": "Bangalore"
         }
     ],
