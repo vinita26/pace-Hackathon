@@ -7,8 +7,9 @@ import M from 'materialize-css/dist/js/materialize.min.js'
 
 const Vin = (props) => {
 
-    const [assetId, setAssetId] = useState('')
+    const [assetId, setAssetId] = useState('');
     const [locationName, setLocationName] = useState('');
+    const [sellerId, setSellerId] = useState('');
     const [historyElements, setHistoryElements] = useState([])
     const [historyLabel, setHistoryLabel] = useState('')
 
@@ -17,6 +18,8 @@ const Vin = (props) => {
         const value = {
             "wheel": assetId
         }
+        console.log("parameters:", value);
+        
         const res = await fetch(`http://ec2-34-229-55-132.compute-1.amazonaws.com:3000/api/traceWheelTransactions?wheel=${assetId}`, {
             method: 'POST',
             headers: {
@@ -27,6 +30,8 @@ const Vin = (props) => {
         });
         const data = await res.json();
         console.log('vin data:', data)
+        console.log('data length:',data.length);
+        
 
         if (data.length > 0) {
             M.toast({ html: "Product exists in Blockchain Network" })
@@ -50,7 +55,7 @@ const Vin = (props) => {
             
             console.log("part:",part);
             
-            return !isVin ? <li key="">{part}  </li> : <li>{`${parseValue.vin.substring(parseValue.vin.lastIndexOf('.') + 1)}`}</li>
+            return !isVin ? <li >{part}  </li> : <li>{`${parseValue.vin.substring(parseValue.vin.lastIndexOf('.') + 1)}`}</li>
 
             //console.log("parseValue:", parseValue)
             // return (
@@ -118,7 +123,7 @@ const Vin = (props) => {
                             <div className="row">
                                 <form className="col s12">
                                         <span> <strong>Seller Code:</strong></span>
-                                        <input placeholder="Value" id="seller_code" type="text" className="validate white-text"/>
+                                        <input placeholder="Value" id="seller_code" type="text" className="validate white-text" onChange={e => setSellerId(e.target.value)} value={sellerId}/>
                                         
                                 </form>
                             </div>

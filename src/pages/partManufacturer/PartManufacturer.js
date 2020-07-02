@@ -51,7 +51,7 @@ const PartManufacturer = (props) => {
                 "diameter": "16inch",
                 "width": "195mm",
                 "speedRating": "75mbps",
-                "assetId": "WHBAP022",
+                "assetId": "WHBAP024",
                 "manufacturerId": props.participantID,
                 "currentParticipant": props.participantID
             }
@@ -63,10 +63,20 @@ const PartManufacturer = (props) => {
                 "size": "14.5inch",
                 "width": "7inch",
                 "dish": "10mm",
-                "assetId": "SWHBAP022",
+                "assetId": "SWHBAP024",
                 "manufacturerId": props.participantID,
                 "currentParticipant": props.participantID
             }
+        }
+        else if (productName === "BrakePad") {
+            newProduct = {
+                "$class": "org.nissan.dlf." + productName,
+                "damping": "SIMS damping",
+                "frictionMaterial": "Ceramic",
+                "assetId": "BRK004",
+                "manufacturerId": props.participantID,
+                "currentParticipant": props.participantID
+              }
         }
 
         console.log('product', newProduct);
@@ -133,6 +143,7 @@ const PartManufacturer = (props) => {
                                 <option value="" disabled >Select</option>
                                 <option>Wheel</option>
                                 <option>SteeringWheel</option>
+                                <option>BrakePad</option>
                             </select>
 
 
