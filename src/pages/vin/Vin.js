@@ -18,9 +18,8 @@ const Vin = (props) => {
         const value = {
             "wheel": assetId
         }
-        console.log("parameters:", value);
-        
         const res = await fetch(`http://ec2-34-229-55-132.compute-1.amazonaws.com:3000/api/traceWheelTransactions?wheel=${assetId}`, {
+        //const res = await fetch(`http://localhost:5000/traceWheelTransactions?wheel=${assetId}` , {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json'
@@ -30,8 +29,6 @@ const Vin = (props) => {
         });
         const data = await res.json();
         console.log('vin data:', data)
-        console.log('data length:',data.length);
-        
 
         if (data.length > 0) {
             M.toast({ html: "Product exists in Blockchain Network" })
@@ -39,6 +36,7 @@ const Vin = (props) => {
         else {
             M.toast({ html: "Product doesn't exists in Blockchain Network" })
         }
+       
         const historyElements = data.map(value => {
             const parseValue = JSON.parse(value)
             let part=""
@@ -78,6 +76,7 @@ const Vin = (props) => {
             return (<label className="white-text" > <strong>Part History:</strong></label>)
         }
         setHistoryLabel(historyLabel)
+        props.history.push(`/vin/finalPage`);
     }
 
 

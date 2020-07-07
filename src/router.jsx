@@ -7,6 +7,7 @@ import PartManufacturer from './pages/partManufacturer/PartManufacturer';
 import CarManufacturer from './pages/carManufacturer/CarManufacturer';
 import Dealer from './pages/dealer/Dealer';
 import Vin from './pages/vin/Vin';
+import FinalPage from './pages/finalPage/finalPage';
 import AppNavbar from './components/layouts/AppNavbar';
 import Footer from './components/layouts/Footer'
 
@@ -25,6 +26,7 @@ class Router extends React.Component {
                         <Route exact path="/carManufacturer/:participantId" component={CarManufacturer} />
                         <Route exact path="/dealer/:participantId" component={Dealer} />
                         <Route exact path="/vin/:participantId" component={Vin} />
+                        <Route exact path="/vin/finalPage" component={FinalPage} />
                     </BrowserRouter>
                 </Provider>
                 <Footer />

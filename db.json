@@ -1,106 +1,259 @@
 {
-    "PartManufacturer": [
-        {
-            "$class": "org.nissan.dlf.PartManufacturer",
-            "participantID": "APB002",
-            "name": "Apollo",
-            "location": "Bangalore"
-        },
-        {
-            "$class": "org.nissan.dlf.PartManufacturer",
-            "participantID": "MRB001",
-            "name": "MRF1",
-            "location": "Bangalore"
-        },
-        {
-            "$class": "org.nissan.dlf.PartManufacturer",
-            "participantID": "TKT001",
-            "name": "Takata",
-            "location": "Bangalore"
-        }
-    ],
-    "CarManufacturer": [
-        {
-            "$class": "org.nissan.dlf.CarManufacturer",
-            "participantID": "NISINDBAN001",
-            "name": "NISSAN",
-            "location": "Bangalore"
-        }
-    ],
-    "Dealer": [
-        {
-            "$class": "org.nissan.dlf.Dealer",
-            "participantID": "SUB001",
-            "name": "Surya Nissan",
-            "location": "Bangalore"
-        },
-        {
-            "$class": "org.nissan.dlf.Dealer",
-            "participantID": "SUB002",
-            "name": "Apple Nissan",
-            "location": "Mumbai"
-        }
-    ],
-    "Vin": [
-        {
-            "$class": "org.nissan.dlf.Vin",
-            "vinID": "NISSBANG000001",
-            "carManufacturer": "resource:org.nissan.dlf.CarManufacturer#NISINDBAN001",
-            "make": "2020",
-            "model": "KICKS",
-            "color": "BRONZE GREY WITH AMBER ORANGE"
-        }
-    ],
-    "SteeringWheel": [
-        {
-            "$class": "org.nissan.dlf.SteeringWheel",
-            "spocs": "R&P",
-            "size": "14.5inch",
-            "width": "7inch",
-            "dish": "10mm",
-            "assetId": "STWB001",
-            "manufacturerId": "resource:org.nissan.dlf.PartManufacturer#HOTTRACKS001",
-            "currentParticipant": "resource:org.nissan.dlf.PartManufacturer#MRB001"
-        },
-        {
-            "$class": "org.nissan.dlf.SteeringWheel",
-            "spocs": "R&P",
-            "size": "14.5inch",
-            "width": "7inch",
-            "dish": "10mm",
-            "assetId": "STWB002",
-            "manufacturerId": "resource:org.nissan.dlf.PartManufacturer#MRB002",
-            "currentParticipant": "resource:org.nissan.dlf.PartManufacturer#MRB001"
-        },
-        {
-            "$class": "org.nissan.dlf.SteeringWheel",
-            "spocs": "R&P",
-            "size": "14.5inch",
-            "width": "7inch",
-            "dish": "10mm",
-            "assetId": "STWB003",
-            "manufacturerId": "resource:org.nissan.dlf.PartManufacturer#MRB002",
-            "currentParticipant": "resource:org.nissan.dlf.Dealer#SUB001"
-        }
-    ],
-    "Wheel": [
-        {
-            "$class": "org.nissan.dlf.Wheel",
-            "diameter": "16inch",
-            "width": "195mm",
-            "speedRating": "75mbps",
-            "assetId": "WHBMRF001",
-            "manufacturerId": "resource:org.nissan.dlf.PartManufacturer#MRB001",
-            "currentParticipant": "resource:org.nissan.dlf.PartManufacturers#APB002"
-        },
-        {
-            "$class": "org.nissan.dlf.Wheel",
-            "diameter": "14inch",
-            "width": "195mm",
-            "speedRating": "75mbps",
-            "assetId": "WHBMRF002",
-            "manufacturerId": "resource:org.nissan.dlf.PartManufacturer#MRB001",
-            "currentParticipant": "resource:org.nissan.dlf.PartManufacturer#MRB001"
-        }
-    ]
+  "PartManufacturer": [
+    {
+      "$class": "org.nissan.dlf.PartManufacturer",
+      "participantID": "APB002",
+      "name": "Apollo",
+      "location": "Bangalore"
+    },
+    {
+      "$class": "org.nissan.dlf.PartManufacturer",
+      "participantID": "MRB001",
+      "name": "MRF1",
+      "location": "Bangalore"
+    },
+    {
+      "$class": "org.nissan.dlf.PartManufacturer",
+      "participantID": "TKT001",
+      "name": "Takata",
+      "location": "Bangalore"
+    }
+  ],
+  "CarManufacturer": [
+    {
+      "$class": "org.nissan.dlf.CarManufacturer",
+      "participantID": "NISINDBAN001",
+      "name": "NISSAN",
+      "location": "Bangalore"
+    }
+  ],
+  "Dealer": [
+    {
+      "$class": "org.nissan.dlf.Dealer",
+      "participantID": "SUB001",
+      "name": "Surya Nissan",
+      "location": "Bangalore"
+    },
+    {
+      "$class": "org.nissan.dlf.Dealer",
+      "participantID": "SUB002",
+      "name": "Apple Nissan",
+      "location": "Mumbai"
+    }
+  ],
+  "Vin": [
+    {
+      "$class": "org.nissan.dlf.Vin",
+      "vinID": "NISSBANG000001",
+      "carManufacturer": "resource:org.nissan.dlf.CarManufacturer#NISINDBAN001",
+      "make": "2020",
+      "model": "KICKS",
+      "color": "BRONZE GREY WITH AMBER ORANGE"
+    }
+  ],
+  "SteeringWheel": [
+    {
+      "$class": "org.nissan.dlf.SteeringWheel",
+      "spocs": "R&P",
+      "size": "14.5inch",
+      "width": "7inch",
+      "dish": "10mm",
+      "assetId": "STWB001",
+      "manufacturerId": "resource:org.nissan.dlf.PartManufacturer#HOTTRACKS001",
+      "currentParticipant": "resource:org.nissan.dlf.PartManufacturer#MRB001"
+    },
+    {
+      "$class": "org.nissan.dlf.SteeringWheel",
+      "spocs": "R&P",
+      "size": "14.5inch",
+      "width": "7inch",
+      "dish": "10mm",
+      "assetId": "STWB002",
+      "manufacturerId": "resource:org.nissan.dlf.PartManufacturer#MRB002",
+      "currentParticipant": "resource:org.nissan.dlf.PartManufacturer#MRB001"
+    },
+    {
+      "$class": "org.nissan.dlf.SteeringWheel",
+      "spocs": "R&P",
+      "size": "14.5inch",
+      "width": "7inch",
+      "dish": "10mm",
+      "assetId": "STWB003",
+      "manufacturerId": "resource:org.nissan.dlf.PartManufacturer#MRB002",
+      "currentParticipant": "resource:org.nissan.dlf.Dealer#SUB001"
+    }
+  ],
+  "Wheel": [
+    {
+      "$class": "org.nissan.dlf.Wheel",
+      "diameter": "16inch",
+      "width": "195mm",
+      "speedRating": "75mbps",
+      "assetId": "WHBMRF001",
+      "manufacturerId": "resource:org.nissan.dlf.PartManufacturer#MRB001",
+      "currentParticipant": "resource:org.nissan.dlf.PartManufacturers#APB002"
+    },
+    {
+      "$class": "org.nissan.dlf.Wheel",
+      "diameter": "14inch",
+      "width": "195mm",
+      "speedRating": "75mbps",
+      "assetId": "WHBMRF002",
+      "manufacturerId": "resource:org.nissan.dlf.PartManufacturer#MRB001",
+      "currentParticipant": "resource:org.nissan.dlf.PartManufacturer#MRB001"
+    }
+  ],
+  "traceWheelTransactions": [
+    {
+      "id": 1,
+      "$class": "org.nissan.dlf.traceWheelTransactions",
+      "wheel": "WHBAP002",
+      "transactionId": "0ff0a6b8c7e2dcbb318c4014bc3b8c36a139d2051dd8c4368c740697c708b2dd",
+      "timestamp": "2020-07-02T14:34:23.933Z"
+    },
+    {
+      "id": 2,
+      "$class": "org.nissan.dlf.traceWheelTransactions",
+      "wheel": "123",
+      "transactionId": "140ead6ec176fb4cdb39cec31c0e5be362a845f25d473c0a3c7e6adfd89e8f37",
+      "timestamp": "2020-07-01T13:06:13.341Z"
+    },
+    {
+      "id": 3,
+      "$class": "org.nissan.dlf.traceWheelTransactions",
+      "wheel": "WHBAP002",
+      "transactionId": "2fc8f1afec588c15666561056c9f48f366c3b794f219c4a3567cbfa2d36138ea",
+      "timestamp": "2020-07-01T08:11:12.882Z"
+    },
+    {
+      "id": 4,
+      "$class": "org.nissan.dlf.traceWheelTransactions",
+      "wheel": "WHBAP002",
+      "transactionId": "3317359548c9b5cd25b4b464d0c5025911b2a598a407ea02c9bab9f652d9607c",
+      "timestamp": "2020-07-01T15:07:40.081Z"
+    },
+    {
+      "id": 5,
+      "$class": "org.nissan.dlf.traceWheelTransactions",
+      "wheel": "WHBAP002",
+      "transactionId": "40581692041513d43d982953bb9f22422e8c3992f53d22b00c704697662ca8e3",
+      "timestamp": "2020-07-01T13:00:42.782Z"
+    },
+    {
+      "id": 6,
+      "$class": "org.nissan.dlf.traceWheelTransactions",
+      "wheel": "WHBAP003",
+      "transactionId": "4615f0a2f398b4d0bd55f666f2eeec8cee70f0b40dca67ceb38a304cc0266efc",
+      "timestamp": "2020-07-01T13:06:23.978Z"
+    },
+    {
+      "id": 7,
+      "$class": "org.nissan.dlf.traceWheelTransactions",
+      "wheel": "WHBAP022",
+      "transactionId": "4bf1b94cb3b7ba63a3ddf4d04ae271db0c9e279a3b519831d7f9f6e37108f29c",
+      "timestamp": "2020-07-01T12:43:00.509Z"
+    },
+    {
+      "id": 8,
+      "$class": "org.nissan.dlf.traceWheelTransactions",
+      "wheel": "WHBAP002",
+      "transactionId": "71b9f37b422752f5033d8367d8fe030807a462b26ee2828da51ace5a87dc2d21",
+      "timestamp": "2020-07-01T14:28:26.327Z"
+    },
+    {
+      "id": 9,
+      "$class": "org.nissan.dlf.traceWheelTransactions",
+      "wheel": "WHBAP022",
+      "transactionId": "7a6102e9c846f0ef0eaf603c6e28ddb9872431916fd3be9c8d253c77abd0d468",
+      "timestamp": "2020-07-01T12:40:03.796Z"
+    },
+    {
+      "id": 10,
+      "$class": "org.nissan.dlf.traceWheelTransactions",
+      "wheel": "WHBAP002",
+      "transactionId": "80d9623c879eaa1997d207fd28acf8fb68b11ba10b6a35fc50b26c9bd2453e97",
+      "timestamp": "2020-07-01T12:50:16.226Z"
+    },
+    {
+      "id": 11,
+      "$class": "org.nissan.dlf.traceWheelTransactions",
+      "wheel": "WHBAP002",
+      "transactionId": "87a6d8c28ce879744e695da8e6dacbfe79ab017d795e0b6d96013909bc40e7c5",
+      "timestamp": "2020-07-02T15:02:54.686Z"
+    },
+    {
+      "id": 12,
+      "$class": "org.nissan.dlf.traceWheelTransactions",
+      "wheel": "WHBAP002",
+      "transactionId": "8a26e1cb760a3fd73ca3ef7175a47dacee0444fc259c6cd836ddeb589a875939",
+      "timestamp": "2020-07-01T14:41:16.451Z"
+    },
+    {
+      "id": 13,
+      "$class": "org.nissan.dlf.traceWheelTransactions",
+      "wheel": "WHBAP002",
+      "transactionId": "97e3f101a50185dfd7df2700011b0d5e7c3dcd87106cacf351be910d115f0ba7",
+      "timestamp": "2020-07-01T14:33:54.798Z"
+    },
+    {
+      "id": 14,
+      "$class": "org.nissan.dlf.traceWheelTransactions",
+      "wheel": "WHBAP002",
+      "transactionId": "994f99c66026d54d64304afe4c6479cbdcd85ddec79a4715ad04e8a25169bf4a",
+      "timestamp": "2020-07-01T14:34:34.586Z"
+    },
+    {
+      "id": 15,
+      "$class": "org.nissan.dlf.traceWheelTransactions",
+      "wheel": "WHBAP002",
+      "transactionId": "9b790c9a2a78881826b8fe3e1ef858134589ca9109aad4b0b7499887346548e8",
+      "timestamp": "2020-07-02T15:17:26.256Z"
+    },
+    {
+      "id": 16,
+      "$class": "org.nissan.dlf.traceWheelTransactions",
+      "wheel": "WHBAP002",
+      "transactionId": "a1844e9993c14a86eeec9a824c9073b7f135643a65765273bfe011f5d5945d5a",
+      "timestamp": "2020-07-01T14:43:51.726Z"
+    },
+    {
+      "id": 17,
+      "$class": "org.nissan.dlf.traceWheelTransactions",
+      "wheel": " WHBAP002",
+      "transactionId": "a6bdffc12bca887838f6c942679b91b71a34fd9d3f5ce37f10c3938591f5c2d9",
+      "timestamp": "2020-07-01T12:50:07.666Z"
+    },
+    {
+      "id": 18,
+      "$class": "org.nissan.dlf.traceWheelTransactions",
+      "wheel": "WHBAP002",
+      "transactionId": "a97f9809f5668b2ccb1815e89ee03d285f8177bf9714faa53980b73cb31d46c6",
+      "timestamp": "2020-07-01T12:44:24.509Z"
+    },
+    {
+      "id": 19,
+      "$class": "org.nissan.dlf.traceWheelTransactions",
+      "wheel": "WHBAP002",
+      "transactionId": "b6b3f6999f17c7699b8e75242e4e9e8d5519f18e7305947fd1f94a7cc45b51a2",
+      "timestamp": "2020-07-07T14:57:40.827Z"
+    },
+    {
+      "id": 20,
+      "$class": "org.nissan.dlf.traceWheelTransactions",
+      "wheel": "WHBAP002",
+      "transactionId": "bb6936819a643fe73c0d5abdc772d9540b5f2eedfb0c4d254d4b1da6c22c6dc6",
+      "timestamp": "2020-07-01T14:32:47.272Z"
+    },
+    {
+      "id": 21,
+      "$class": "org.nissan.dlf.traceWheelTransactions",
+      "wheel": "WHBAP002",
+      "transactionId": "c3a6ba25f3e4af6780716ff8bb2e804864efa396716919563ddb4fd771befbf0",
+      "timestamp": "2020-07-07T15:06:11.702Z"
+    },
+    {
+      "wheel": "WHBAP002",
+      "id": 22
+    }
+  ]
 }
