@@ -26,14 +26,22 @@ const Vin = (props) => {
 
         let assetType = assetId.startsWith("BRK") ? "brakePad" : "wheel";
         console.log("assetType", assetType)
-        const value = {
+        let value={};
+        const value1 = {
             "wheel" : assetId
         }
-
+        const value2 = {
+            "brakePad" : assetId
+        }
+        
         let trackingAPIEndpoint;
         if(assetType=="brakePad") {
             trackingAPIEndpoint= "traceBrakePadTransactions"
-        }else  trackingAPIEndpoint= "traceWheelTransactions"
+            value=value2;
+        }else {
+            trackingAPIEndpoint= "traceWheelTransactions"
+            value=value1;
+        } 
         console.log("trackingAPIEndpoint: ",trackingAPIEndpoint);
         
 
@@ -54,7 +62,7 @@ const Vin = (props) => {
             <span> <strong>Are you going to use this asset?</strong></span>
             <p>
                 <label>
-                    <input name="group1" type="radio" checked/>
+                    <input name="group1" type="radio" defaultChecked/>
                     <span className="white-text">Yes</span>
                 </label>
                 </p>
@@ -98,7 +106,7 @@ const Vin = (props) => {
             
             console.log("part:",part);
             
-            return !isVin ? <li >{part}  </li> : <li>{`${parseValue.vin.substring(parseValue.vin.lastIndexOf('.') + 1)}`}</li>
+            return !isVin ? <li key={value}>{part}  </li> : <li>{`${parseValue.vin.substring(parseValue.vin.lastIndexOf('.') + 1)}`}</li>
 
             //console.log("parseValue:", parseValue)
             // return (
@@ -121,17 +129,13 @@ const Vin = (props) => {
         }
        
         const confidentialityFactor = () => {
-            return (<label className="black-text" > <strong>Confidence Metric: 100%</strong></label>)
+            return (<h6 className="black-text" > <strong>Confidence Metric: 100%</strong></h6>)
         }
 
         if (data.length > 0) {
             setHistoryLabel(historyLabel)
             setHistoryElements(historyElements)
             setConfidentialityFactor(confidentialityFactor)
-            M.toast({ html: "Product exists in Blockchain Network" })
-        }
-        else {
-            M.toast({ html: "Product doesn't exists in Blockchain Network" })
         }
       
         // props.history.push(`/vin/finalPage`);
@@ -184,11 +188,11 @@ const Vin = (props) => {
                                         
                                 </form>
                             </div>
-
+                            {validationMessage}
                             {historyLabel}
                             {historyElements}
                             {confidentialityFactor}
-                            {validationMessage}
+                            
 
 
                         </div>
