@@ -26,7 +26,7 @@ class Router extends React.Component {
                         <Route exact path="/carManufacturer/:participantId" component={CarManufacturer} />
                         <Route exact path="/dealer/:participantId" component={Dealer} />
                         <Route exact path="/vin/:participantId" component={Vin} />
-                        <Route exact path="/vin/finalPage" component={FinalPage} />
+                        {/* <Route exact path="/vin/finalPage" component={FinalPage} /> */}
                     </BrowserRouter>
                 </Provider>
                 <Footer />
