@@ -51,7 +51,7 @@ const PartManufacturer = (props) => {
                 "diameter": "16inch",
                 "width": "195mm",
                 "speedRating": "75mbps",
-                "assetId": "WHBAP024",
+                "assetId": "WHBAP025",
                 "manufacturerId": props.participantID,
                 "currentParticipant": props.participantID
             }
@@ -63,7 +63,7 @@ const PartManufacturer = (props) => {
                 "size": "14.5inch",
                 "width": "7inch",
                 "dish": "10mm",
-                "assetId": "SWHBAP024",
+                "assetId": "SWHBAP025",
                 "manufacturerId": props.participantID,
                 "currentParticipant": props.participantID
             }
@@ -73,7 +73,7 @@ const PartManufacturer = (props) => {
                 "$class": "org.nissan.dlf." + productName,
                 "damping": "SIMS damping",
                 "frictionMaterial": "Ceramic",
-                "assetId": "BRK004",
+                "assetId": "BRK005",
                 "manufacturerId": props.participantID,
                 "currentParticipant": props.participantID
               }

@@ -6,7 +6,7 @@ const AppNavbar = () => {
             <div className="navbar-fixed">
                 <nav className="blue">
                     <div className="nav-wrapper">
-                        <a href="#!" className="brand-logo" style={{ marginLeft: "15px" }}>BlockChain Network</a>
+                        <div className="container" style={{ fontSize:"20px",textAlign:"center" }}>Supply Chain Ledger using BlockChain</div>
                         {/* <ul className="right hide-on-med-and-down">
                             <li><a href="sass.html">Home</a></li>
                             <li><a href="badges.html">About</a></li>
